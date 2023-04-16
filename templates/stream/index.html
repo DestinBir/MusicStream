@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+     {% if user.authenticated %}
+     {% user.logout() %}
+			<div id="wrapper" class="fade-in">
+
+					<div id="intro">
+						<h1>Welcome to<br />
+						MusicStream</h1>
+						<p>This site is made to give you enjoyment of our new album. To follow the artist, {{ artist.name }} <a href="{{artist.youtube_link}}">Click here</a> for more informations.</p>
+						<ul class="actions">
+							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Roll down</a></li>
+						</ul>
+					</div>
+
+					<header id="header">
+						<a href="{% url 'home_page'%}" class="logo">MusicStream</a>
+					</header>
+
+					<nav id="nav">
+						<ul class="links">
+							<li class="active"><a href="{% url 'home_page'%}">Welcome</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="{{ artist.spotify_link }}" class="icon brands fa-spotify"><span class="label">Spotify</span></a></li>
+							<li><a href="{{ artist.facebook_link }}" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+							<li><a href="{{ artist.instagram_link }}" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+							<li><a href="{{ artist.youtube_link }}" class="icon brands fa-youtube"><span class="label">YouTube</span></a></li>
+						</ul>
+					</nav>
+
+					<div id="main">
+							<article class="post featured">
+								<header class="major">
+									<span class="date"> Hey, here is an overview </span>
+									<h2>The presentation of <br/>
+									the new Album</h2>
+									<p> {{ artist.description }} <br/> We're so glad to see you here, hope you'll enjoy your moment </p>
+								</header>
+								<a href="#" class="image main"><img src="images/piano.jfif" alt="" /></a>
+								<ul class="actions special">
+									<li><a href="{% url 'login_page' %}" class="button large">Log in</a></li>
+								</ul>
+							</article>
+					</div>
+
+					<div id="copyright">
+						<ul><li>&copy; Destin B & Samuel M.</li><li>Design: <a href="https://destinbir.github.io/">Destin B</a></li></ul>
+					</div>
+
+			</div>
+     {% endif %}
+{% endblock %}

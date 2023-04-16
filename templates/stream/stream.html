@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block content %}
+			<div id="wrapper" class="fade-in">
+
+					<div id="intro">
+						<h1>Now let us<br />
+						Enjoy music</h1>
+						<ul class="actions">
+							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Roll down</a></li>
+						</ul>
+					</div>
+
+					<header id="header">
+						<a href="#nav" class="logo">Enjoy Music</a>
+					</header>
+
+					<nav id="nav">
+						<ul class="links">
+							<li class="active"><a href="#nav">Enjoy Music</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="{{artist.spotify_link}}" class="icon brands fa-spotify"><span class="label">Spotify</span></a></li>
+							<li><a href="{{artist.facebook_link}}" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+							<li><a href="{{artist.instagram_link}}" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+							<li><a href="{{artist.youtube_link}}" class="icon brands fa-youtube"><span class="label">YouTube</span></a></li>
+						</ul>
+					</nav>
+					<div id="main">
+							<section class="posts">
+                                {% if user.is_authenticated %}
+                                {% for music in song %}
+								<article>
+									<header>
+										<h2><a href="#">Title :<br />
+                                            {{ music.title }}</a></h2>
+									</header>
+									<p class="image fit"><img src="{{ music.picture.url }}" alt="Title" /></p>
+									<p>{{ music.description }}</p>
+									<audio controls loop>
+										<source src="{{ music.song.url }}">
+									</audio>
+								</article>
+                                {% endfor %}
+                                {% else %}
+                                    <p style="color: darkred"> You must log in before come on this page</p>
+                                {% endif %}
+							</section>
+
+							<footer>
+								<div class="pagination">
+									<a href="#" class="page active">1</a>
+									<a href="#" class="page">2</a>
+									<a href="#" class="page">3</a>
+									<span class="extra">&hellip;</span>
+									<a href="#" class="page">8</a>
+									<a href="#" class="page">9</a>
+									<a href="#" class="page">10</a>
+									<a href="#" class="next">Next</a>
+								</div>
+							</footer>
+
+					</div>
+
+					<div id="copyright">
+						<ul><li>&copy; Destin B & Samuel M.</li><li>Design: <a href="https://destinbir.github.io/">Destin B</a></li></ul>
+					</div>
+
+			</div>
+
+{% endblock %}

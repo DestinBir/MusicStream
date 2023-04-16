@@ -11,6 +11,6 @@ def login_user(request):
         visitor = authenticate(username=username, email=email, password=password)
         if visitor:
             login(request, visitor)
-            redirect('streaming_page')
+            return redirect('streaming_page')
 
     return render(request, 'player/login.html')
