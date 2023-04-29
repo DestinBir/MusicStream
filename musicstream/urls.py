@@ -11,4 +11,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/', login_user, name='login_page'),
     path('stream/', stream, name='streaming_page'),
+    path('logout/', logout_user, name='logout_page')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

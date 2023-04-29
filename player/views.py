@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from .models import *
 
 
@@ -14,3 +14,9 @@ def login_user(request):
             return redirect('streaming_page')
 
     return render(request, 'player/login.html')
+
+
+def logout_user(request):
+    logout(request)
+
+    return redirect('home_page')

@@ -1,8 +1,6 @@
 {% extends 'base.html' %}
 
 {% block content %}
-     {% if user.authenticated %}
-     {% user.logout() %}
 			<div id="wrapper" class="fade-in">
 
 					<div id="intro">
@@ -50,5 +48,5 @@
 					</div>
 
 			</div>
-     {% endif %}
+
 {% endblock %}

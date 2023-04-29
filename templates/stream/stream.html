@@ -18,6 +18,9 @@
 					<nav id="nav">
 						<ul class="links">
 							<li class="active"><a href="#nav">Enjoy Music</a></li>
+                            {% if user.is_authenticated %}
+                                <li class=""><a href="{% url 'logout_page' %}">Log Out</a></li>
+                            {% endif %}
 						</ul>
 						<ul class="icons">
 							<li><a href="{{artist.spotify_link}}" class="icon brands fa-spotify"><span class="label">Spotify</span></a></li>
@@ -44,6 +47,9 @@
                                 {% endfor %}
                                 {% else %}
                                     <p style="color: darkred"> You must log in before come on this page</p>
+                                    <ul class="actions">
+							            <li><a href="{% url 'login_page' %}" class="button icon solid solo fa-arrow-left scrolly">Log In </a></li>
+						            </ul>
                                 {% endif %}
 							</section>
 
